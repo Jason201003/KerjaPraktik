@@ -40,7 +40,8 @@
             <li class="nav-item active">
                 <a class="nav-link"  href="{{ url('/dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span>Dashboard</span>
+                </a>
             </li>
 
             <!-- Divider -->
@@ -49,12 +50,31 @@
             @if (auth()->user()->role == 'admin')
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#"
+                    <a class="nav-link collapsed" href="{{ url('/kelola-kamar') }}"
                         aria-expanded="true" aria-controls="collapseTwo">
-                        <i class="fas fa-fw fa-cubes"></i>
+                        <i class="fas fa-fw fa-cog"></i>
                         <span>Kamar</span>
                     </a>
                 </li>   
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+                <!-- Only show Kelola User for Admin -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                        aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fas fa-fw fa-user-cog"></i>
+                        <span>Kelola Account</span>
+                    </a>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item" href="{{ url('/kelola-user/admin') }}">Kelola Admin</a>
+                            <a class="collapse-item" href="{{ url('/kelola-user/resepsionis') }}">Kelola Resepsionis</a>
+                            <a class="collapse-item" href="{{ url('/kelola-user/user') }}">Kelola User</a>
+                        </div>  
+                    </div>
+                </li>
+                <!-- Divider -->
+                <hr class="sidebar-divider d-none d-md-block">
             @endif
             
 
@@ -72,22 +92,6 @@
                     <span>Navbar 3</span>
                 </a>
             </li>
-
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            @if(auth()->user()->role == 'admin')
-                <!-- Divider -->
-                <hr class="sidebar-divider">
-                <!-- Only show Kelola User for Admin -->
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/kelola-user/user') }}">
-                        <i class="fas fa-fw fa-user-cog"></i>
-                        <span>Kelola User</span>
-                    </a>
-                </li>
-                <!-- Divider -->
-                <hr class="sidebar-divider d-none d-md-block">
-            @endif
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
